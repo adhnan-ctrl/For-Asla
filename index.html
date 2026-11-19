@@ -1,1 +1,475 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d29">
+<title>A Little World for Asla ✨</title>
+
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  font-family: Georgia, serif;
+  background:#100d29;
+  color:#fff5e9;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(ellipse at 20% 20%,#49326d 0%,transparent 45%),
+    radial-gradient(ellipse at 85% 75%,#173d5d 0%,transparent 45%),
+    linear-gradient(150deg,#100d29,#21143c,#101d36);
+}
+
+#stars {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.star {
+  position:absolute;
+  color:#ffe9a8;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from {opacity:.25;transform:scale(.7)}
+  to {opacity:1;transform:scale(1.2)}
+}
+
+section {
+  display:none;
+  min-height:100vh;
+  padding:65px 22px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  flex-direction:column;
+  gap:22px;
+  animation:appear .8s ease;
+}
+
+section.active {display:flex}
+
+@keyframes appear {
+  from {opacity:0;transform:translateY(15px)}
+  to {opacity:1;transform:translateY(0)}
+}
+
+h1 {
+  font-size:clamp(2.5rem,9vw,4.5rem);
+  color:#ffe3a5;
+  font-weight:normal;
+}
+
+h2 {
+  color:#ffe3a5;
+  font-size:2rem;
+  font-weight:normal;
+}
+
+p {
+  line-height:1.9;
+  max-width:540px;
+  color:#e7dced;
+  font-size:1.05rem;
+}
+
+.moon {
+  font-size:65px;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {transform:translateY(-14px)}
+}
+
+button {
+  border:1px solid #eacb98;
+  border-radius:30px;
+  padding:13px 24px;
+  background:linear-gradient(120deg,#d9ad75,#f2d9a5);
+  color:#21152c;
+  font-size:15px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.25s;
+}
+
+button:hover {transform:translateY(-3px);filter:brightness(1.1)}
+button:active {transform:scale(.96)}
+
+.secondary {
+  background:transparent;
+  color:#ffe3a5;
+}
+
+.card {
+  width:min(100%,480px);
+  padding:28px 23px;
+  border:1px solid #ffffff25;
+  border-radius:22px;
+  background:#ffffff0d;
+  backdrop-filter:blur(10px);
+  box-shadow:0 15px 50px #0003;
+}
+
+.actions {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+}
+
+.small {
+  font-size:.85rem;
+  color:#c6b6d7;
+}
+
+.letter {
+  font-size:1.05rem;
+  line-height:2;
+  text-align:left;
+}
+
+.gift {
+  font-size:65px;
+  background:#ffffff12;
+  border:1px solid #ffffff22;
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.gift:hover {transform:rotate(-5deg) scale(1.05)}
+
+#gameStars {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:35px;
+  min-height:100px;
+}
+
+.tapStar {
+  cursor:pointer;
+  transition:.2s;
+}
+
+.tapStar:active {transform:scale(1.5)}
+
+#memory {
+  display:grid;
+  grid-template-columns:repeat(3,75px);
+  gap:10px;
+  justify-content:center;
+}
+
+.tile {
+  width:75px;
+  height:75px;
+  border:1px solid #ffe3a5;
+  border-radius:13px;
+  background:#ffffff12;
+  color:white;
+  font-size:27px;
+}
+
+#finalMessage {
+  color:#ffe3a5;
+  font-size:1.2rem;
+  line-height:2;
+}
+
+footer {
+  color:#bbaaca;
+  font-size:12px;
+  padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<!-- INTRO -->
+<section id="intro" class="active">
+  <div class="moon">☾</div>
+  <p class="small">A LITTLE SOMETHING, MADE JUST FOR YOU</p>
+  <h1>Hey, Asla.</h1>
+  <p>Some days deserve more than a simple birthday wish.</p>
+  <p>So I made you a tiny universe. Ready to explore?</p>
+  <button onclick="go('welcome')">Enter your little universe ✨</button>
+  <footer>Made with care · 2026</footer>
+</section>
+
+<!-- WELCOME -->
+<section id="welcome">
+  <div class="moon">🌙</div>
+  <h1>It's your day!</h1>
+  <div class="card">
+    <p>
+      Another chapter. Another sunrise. Another collection of
+      moments waiting to become memories.
+    </p>
+    <p style="margin-top:15px">
+      May this new year bring you peace in your heart,
+      light in your path and reasons to smile.
+    </p>
+  </div>
+  <button onclick="go('letter')">There's a letter for you 💌</button>
+</section>
+
+<!-- LETTER -->
+<section id="letter">
+  <div class="moon">💌</div>
+  <h2>A little letter</h2>
+  <div class="card letter">
+    Dear Asla,
+
+    <br><br>
+
+    If I could wrap a feeling into a present,
+    I'd choose the feeling of a beautiful sunrise.
+    Something gentle, something hopeful,
+    something that reminds you that beautiful things
+    can begin again.
+
+    <br><br>
+
+    I hope you never lose your curiosity,
+    your laughter or the little things
+    that make you who you are.
+
+    <br><br>
+
+    Life won't always be a perfectly written poem.
+    But I hope you find beautiful verses
+    even on its ordinary pages.
+
+    <br><br>
+
+    May Allah protect you, guide your steps,
+    grant you barakah in your life
+    and fill your heart with peace.
+
+    <br><br>
+
+    Happy birthday, Asla. 🌷
+  </div>
+  <button onclick="go('games')">Okay, time for some fun! 🎮</button>
+</section>
+
+<!-- GAMES MENU -->
+<section id="games">
+  <div class="moon">⭐</div>
+  <h2>Little fun corner</h2>
+  <p>Three tiny adventures. Let's see how you do!</p>
+  <div class="actions">
+    <button onclick="startStars()">Catch 7 stars</button>
+    <button onclick="go('gifts')">Choose a gift 🎁</button>
+    <button onclick="startMemory()">Memory game 🧠</button>
+  </div>
+  <button class="secondary" onclick="go('letter')">Read the letter again</button>
+</section>
+
+<!-- STAR GAME -->
+<section id="starGame">
+  <h2>Catch the stars ⭐</h2>
+  <p>Tap seven stars to fill your little sky.</p>
+  <h1 id="score">0 / 7</h1>
+  <div id="gameStars"></div>
+  <p id="starStatus">Find the stars!</p>
+  <button class="secondary" onclick="go('games')">Back to games</button>
+</section>
+
+<!-- GIFT GAME -->
+<section id="gifts">
+  <h2>Choose your mystery gift 🎁</h2>
+  <p>Three gifts. Each has a little message inside.</p>
+  <div class="actions">
+    <div class="gift" onclick="reveal(0)">🎁</div>
+    <div class="gift" onclick="reveal(1)">🎀</div>
+    <div class="gift" onclick="reveal(2)">✨</div>
+  </div>
+  <div class="card">
+    <p id="giftMessage">Pick one. No cheating!</p>
+  </div>
+  <button class="secondary" onclick="go('games')">Back to games</button>
+</section>
+
+<!-- MEMORY GAME -->
+<section id="memoryGame">
+  <h2>Find the matching pairs</h2>
+  <p>Match all three pairs to win.</p>
+  <div id="memory"></div>
+  <p id="memoryStatus">0 / 3 pairs found</p>
+  <button class="secondary" onclick="startMemory()">Restart game</button>
+  <button class="secondary" onclick="go('games')">Back to games</button>
+</section>
+
+<!-- FINAL -->
+<section id="final">
+  <div class="moon">🌙✨</div>
+  <h1>One last wish.</h1>
+  <div class="card">
+    <p id="finalMessage">
+      May your days be gentle, your dreams be meaningful
+      and your heart always find its way back to peace.
+    </p>
+    <br>
+    <h2>Happy Birthday, Asla!</h2>
+    <p class="small">May Allah bless your journey. Ameen.</p>
+  </div>
+  <p>Some wishes are too beautiful to fit inside a screen.</p>
+  <button onclick="go('intro')">Experience it again ↻</button>
+</section>
+
+<script>
+// CREATE THE BACKGROUND STARS
+const sky = document.getElementById("stars");
+
+for(let i=0;i<75;i++){
+  const star=document.createElement("span");
+  star.className="star";
+  star.textContent="✦";
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+  star.style.fontSize=(Math.random()*12+5)+"px";
+  star.style.animationDelay=Math.random()*3+"s";
+  sky.appendChild(star);
+}
+
+// NAVIGATION
+function go(id){
+  document.querySelectorAll("section").forEach(s=>{
+    s.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+  window.scrollTo(0,0);
+}
+
+// STAR GAME
+let starScore=0;
+
+function startStars(){
+  starScore=0;
+  updateStars();
+  go("starGame");
+}
+
+function updateStars(){
+  document.getElementById("score").textContent=starScore+" / 7";
+  const area=document.getElementById("gameStars");
+  area.innerHTML="";
+
+  for(let i=0;i<7-starScore;i++){
+    const s=document.createElement("span");
+    s.textContent="⭐";
+    s.className="tapStar";
+    s.onclick=()=>{
+      starScore++;
+      if(starScore===7){
+        document.getElementById("starStatus").textContent=
+          "You caught them all! Your sky is complete ✨";
+        document.getElementById("score").textContent="7 / 7";
+        area.innerHTML="🌟 🌟 🌟 🌟 🌟 🌟 🌟";
+      } else {
+        updateStars();
+      }
+    };
+    area.appendChild(s);
+  }
+}
+
+// MYSTERY GIFTS
+const messages=[
+  "A reminder: You deserve kindness, including from yourself. 🌷",
+  "A wish: May Allah put endless barakah in your days. 🤍",
+  "A secret: The world is full of beautiful things still waiting for you. ✨"
+];
+
+function reveal(n){
+  document.getElementById("giftMessage").textContent=messages[n];
+}
+
+// MEMORY GAME
+const symbols=["🌙","🌸","⭐"];
+let first=null;
+let locked=false;
+let pairs=0;
+
+function startMemory(){
+  first=null;
+  locked=false;
+  pairs=0;
+  document.getElementById("memoryStatus").textContent="0 / 3 pairs found";
+
+  const deck=[...symbols,...symbols].sort(()=>Math.random()-.5);
+  const area=document.getElementById("memory");
+  area.innerHTML="";
+
+  deck.forEach((symbol)=>{
+    const tile=document.createElement("button");
+    tile.className="tile";
+    tile.textContent="?";
+    tile.dataset.symbol=symbol;
+
+    tile.onclick=()=>{
+      if(locked || tile.textContent!=="?") return;
+
+      tile.textContent=symbol;
+
+      if(!first){
+        first=tile;
+      } else {
+        if(first.dataset.symbol===symbol){
+          pairs++;
+          first.disabled=true;
+          tile.disabled=true;
+          first=null;
+          document.getElementById("memoryStatus").textContent=
+            pairs+" / 3 pairs found";
+
+          if(pairs===3){
+            document.getElementById("memoryStatus").textContent=
+              "You did it! Perfect memory! 🎉";
+          }
+        } else {
+          locked=true;
+          const previous=first;
+          first=null;
+
+          setTimeout(()=>{
+            previous.textContent="?";
+            tile.textContent="?";
+            locked=false;
+          },800);
+        }
+      }
+    };
+
+    area.appendChild(tile);
+  });
+
+  go("memoryGame");
+}
+</script>
+
+</body>
+</html>
+
