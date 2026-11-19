@@ -1,1 +1,795 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#092b25">
+<title>A Little Garden of Joy ✦</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Amiri:wght@400;700&display=swap');
+
+:root {
+ --forest:#092b25;
+ --green:#12483c;
+ --mint:#dce9d9;
+ --cream:#f7f1df;
+ --gold:#d7b66c;
+ --ink:#18352d;
+}
+
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+ margin:0;
+ background:var(--forest);
+ color:var(--cream);
+ font-family:'DM Sans',sans-serif;
+ overflow-x:hidden;
+}
+
+body:before {
+ content:"";
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ background:
+ radial-gradient(circle at 15% 15%,#c3a35b33,transparent 25%),
+ radial-gradient(circle at 85% 60%,#8db69a22,transparent 30%),
+ linear-gradient(135deg,#092b25,#0c382f 55%,#071f1b);
+ z-index:-2;
+}
+
+.stars {
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ z-index:-1;
+ background-image:
+ radial-gradient(1px 1px at 10% 20%,#fff9 99%,transparent),
+ radial-gradient(1px 1px at 70% 12%,#fff8 99%,transparent),
+ radial-gradient(1.5px 1.5px at 35% 68%,#f5dca9aa 99%,transparent),
+ radial-gradient(1px 1px at 88% 83%,#fff8 99%,transparent);
+ background-size:240px 220px;
+ animation:twinkle 5s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+ from {opacity:.35}
+ to {opacity:1}
+}
+
+@keyframes float {
+ 0%,100% {transform:translateY(0)}
+ 50% {transform:translateY(-12px)}
+}
+
+@keyframes glow {
+ 0%,100% {box-shadow:0 0 15px #d7b66c22}
+ 50% {box-shadow:0 0 35px #d7b66c55}
+}
+
+@keyframes pop {
+ 0% {transform:scale(.7);opacity:0}
+ 100% {transform:scale(1);opacity:1}
+}
+
+nav {
+ max-width:1050px;
+ margin:auto;
+ padding:22px 6%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.brand {
+ font-family:'Playfair Display',serif;
+ color:var(--gold);
+ letter-spacing:2px;
+ font-size:17px;
+}
+
+.navtag {
+ font-size:11px;
+ letter-spacing:2px;
+ text-transform:uppercase;
+ color:#c9d8c7;
+}
+
+.hero {
+ min-height:78vh;
+ padding:70px 22px 85px;
+ display:grid;
+ place-items:center;
+ text-align:center;
+ position:relative;
+}
+
+.arch {
+ width:min(540px,94vw);
+ padding:65px 25px 55px;
+ border:1px solid #d7b66c77;
+ border-radius:240px 240px 28px 28px;
+ position:relative;
+ background:linear-gradient(160deg,#ffffff0c,#ffffff03);
+ animation:glow 5s infinite;
+}
+
+.arch:before {
+ content:"";
+ position:absolute;
+ inset:10px;
+ border:1px solid #d7b66c33;
+ border-radius:230px 230px 20px 20px;
+ pointer-events:none;
+}
+
+.moon {
+ font-size:42px;
+ color:var(--gold);
+ display:block;
+ margin-bottom:22px;
+ animation:float 4s ease-in-out infinite;
+}
+
+.eyebrow {
+ font-size:10px;
+ letter-spacing:4px;
+ text-transform:uppercase;
+ color:var(--gold);
+}
+
+h1 {
+ font:500 clamp(44px,9vw,76px)/1.05 'Playfair Display',serif;
+ margin:18px 0;
+ color:var(--cream);
+}
+
+h1 em {
+ color:var(--gold);
+ font-weight:500;
+}
+
+.hero p {
+ max-width:380px;
+ margin:20px auto 28px;
+ color:#d1ded1;
+ line-height:1.8;
+ font-size:14px;
+}
+
+button {
+ border:0;
+ cursor:pointer;
+ font:600 13px 'DM Sans',sans-serif;
+ transition:.2s;
+}
+
+button:active {transform:scale(.97)}
+
+.primary {
+ background:var(--gold);
+ color:#19372d;
+ padding:14px 22px;
+ border-radius:30px;
+ box-shadow:0 8px 24px #0003;
+}
+
+.primary:hover {
+ filter:brightness(1.08);
+ transform:translateY(-2px);
+}
+
+section {
+ max-width:950px;
+ margin:0 auto;
+ padding:55px 22px;
+}
+
+.section-head {
+ text-align:center;
+ margin-bottom:28px;
+}
+
+.kicker {
+ font-size:10px;
+ letter-spacing:3px;
+ text-transform:uppercase;
+ color:var(--gold);
+}
+
+h2 {
+ font:500 clamp(30px,6vw,43px) 'Playfair Display',serif;
+ margin:10px 0 8px;
+}
+
+.sub {
+ color:#c4d1c5;
+ font-size:13px;
+ line-height:1.7;
+}
+
+.verse-grid {
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:16px;
+}
+
+.card {
+ border:1px solid #d7b66c55;
+ background:linear-gradient(145deg,#f8f2e51a,#f8f2e507);
+ border-radius:20px;
+ padding:25px;
+ text-align:center;
+}
+
+.arabic {
+ font:30px/1.9 'Amiri',serif;
+ color:#f0d99e;
+ direction:rtl;
+ margin:4px 0 14px;
+}
+
+.translation {
+ font:italic 19px/1.55 'Playfair Display',serif;
+ color:#fff3d9;
+}
+
+.reference {
+ font-size:10px;
+ letter-spacing:2px;
+ color:var(--gold);
+ margin-top:15px;
+ text-transform:uppercase;
+}
+
+.note {
+ font-size:11px;
+ color:#c1d0c4;
+ line-height:1.7;
+ margin-top:13px;
+}
+
+.message {
+ max-width:700px;
+ margin:auto;
+ background:var(--cream);
+ color:var(--ink);
+ padding:35px 28px;
+ border-radius:22px;
+ text-align:center;
+ position:relative;
+}
+
+.message:before {
+ content:"✦";
+ position:absolute;
+ top:14px;
+ left:18px;
+ color:#b28c42;
+}
+
+.message p {
+ font:italic 20px/1.8 'Playfair Display',serif;
+}
+
+.dua {
+ font-size:13px;
+ line-height:1.9;
+ color:#52645b;
+}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<nav>
+ <div class="brand">✦ A LITTLE GARDEN</div>
+ <div class="navtag">made with duas</div>
+</nav>
+
+<header class="hero" id="home">
+ <div class="arch">
+  <span class="moon">☾</span>
+  <div class="eyebrow">a little universe, just for you</div>
+  <h1>Happy Birthday,<br><em>Asla.</em></h1>
+  <p>
+   May your day be wrapped in kindness,
+   sprinkled with wonder, and filled with
+   the sort of joy that stays long after
+   the candles fade.
+  </p>
+  <button class="primary"
+   onclick="document.getElementById('verses').scrollIntoView({behavior:'smooth'})">
+   Wander through ✦
+  </button>
+ </div>
+</header>
+  
+<section id="verses">
+ <div class="section-head">
+  <div class="kicker">words of comfort</div>
+  <h2>A little light from the Qur’an</h2>
+  <div class="sub">Verses to reflect on, with love and respect.</div>
+ </div>
+
+ <div class="verse-grid">
+  <article class="card">
+   <div class="arabic">
+    فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا
+   </div>
+   <div class="translation">
+    “For indeed, with hardship comes ease.
+    Indeed, with hardship comes ease.”
+   </div>
+   <div class="reference">Surah Ash-Sharh · 94:5–6</div>
+  </article>
+
+  <article class="card">
+   <div class="arabic">
+    مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ
+   </div>
+   <div class="translation">
+    “Your Lord has not forsaken you,
+    nor has He become displeased.”
+   </div>
+   <div class="reference">Surah Ad-Duha · 93:3</div>
+   <div class="note">
+    These words were revealed as reassurance to
+    Prophet Muhammad ﷺ. We can reflect on their
+    reminder of Allah’s care while respecting
+    their original context.
+   </div>
+  </article>
+ </div>
+</section>
+
+<section>
+ <div class="section-head">
+  <div class="kicker">a note from the heart</div>
+  <h2>For your new chapter</h2>
+ </div>
+
+ <div class="message">
+  <p>
+   “May you always find little reasons to smile,
+   beautiful things to discover, and the courage
+   to keep becoming who you dream of being.”
+  </p>
+
+  <div class="dua">
+   May Allah bless your days with barakah,
+   guide your steps toward what is good,
+   protect your heart, and grant you peace
+   in this life and the next. Ameen.
+  </div>
+ </div>
+</section>
+
+<section id="games">
+ <div class="section-head">
+  <div class="kicker">play a little</div>
+  <h2>The joy garden</h2>
+  <div class="sub">
+   Play the mini-games, collect golden coins,
+   and unlock a tiny surprise.
+  </div>
+ </div>
+
+ <div class="coinbar">
+  ✦ <strong id="coinCount">0</strong> golden coins
+ </div>
+
+ <div class="game-grid">
+
+  <article class="game">
+   <div class="game-icon">⭐</div>
+   <h3>Catch the stars</h3>
+   <p>Tap the star 7 times before the 20-second timer ends.</p>
+   <button id="startStars" onclick="startStars()">Start game</button>
+   <div class="play-area" id="starArea">Ready when you are.</div>
+  </article>
+
+  <article class="game">
+   <div class="game-icon">🎁</div>
+   <h3>Mystery gift</h3>
+   <p>Choose a little gift. One surprise, one chance per visit.</p>
+   <button id="giftButton" onclick="openGift()">Open a gift</button>
+   <div class="play-area" id="giftArea">What could it be?</div>
+  </article>
+
+  <article class="game">
+   <div class="game-icon">🌙</div>
+   <h3>Moon & stars</h3>
+   <p>Match all three pairs of symbols to earn 50 coins.</p>
+
+   <div id="memory"></div>
+
+   <div class="play-area" id="memoryStatus">
+    Find the matching pairs.
+   </div>
+
+   <button id="memoryReset" onclick="resetMemory()">
+    Shuffle again
+   </button>
+  </article>
+
+ </div>
+</section>
+
+<section id="treasure">
+ <div class="section-head">
+  <div class="kicker">the final little surprise</div>
+  <h2>Golden treasure</h2>
+  <div class="sub">
+   A reward waiting at the end of your joy-garden adventure.
+  </div>
+ </div>
+
+ <div class="treasure">
+  <div class="chest">🗝️</div>
+
+  <h3 style="font:500 25px 'Playfair Display',serif">
+   A treasure for you
+  </h3>
+
+  <p class="sub">
+   Collect 100 coins from the games to unlock it.
+  </p>
+
+  <button class="primary" id="unlockButton"
+   onclick="unlockTreasure()" disabled>
+   Unlock with 100 ✦
+  </button>
+
+  <div id="treasureMessage">
+   May Allah make your future brighter than every hope
+   you carry. May He place goodness in the paths you
+   choose, surround you with sincere people, and grant
+   you a heart that is always close to Him. Ameen.
+
+   <br><br>
+
+   And remember: you deserve to celebrate every little
+   step forward. ✨
+  </div>
+ </div>
+</section>
+
+<footer>
+ made of stardust, warm wishes & <span>duas</span> · with care ✦
+</footer>
+
+<style>
+.game-grid {
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:15px;
+}
+
+.game {
+ border:1px solid #d7b66c55;
+ background:#ffffff0b;
+ border-radius:20px;
+ padding:22px;
+ text-align:center;
+}
+
+.game-icon {font-size:30px}
+
+.game h3 {
+ font:500 22px 'Playfair Display',serif;
+ margin:10px 0;
+}
+
+.game p {
+ font-size:12px;
+ color:#c4d1c5;
+ line-height:1.6;
+ min-height:38px;
+}
+
+.game button {
+ background:#dce9d9;
+ color:#123b30;
+ padding:11px 17px;
+ border-radius:24px;
+ margin-top:7px;
+}
+
+.game button:disabled {
+ opacity:.55;
+ cursor:default;
+}
+
+.play-area {
+ margin-top:14px;
+ min-height:60px;
+ color:var(--gold);
+ font-size:13px;
+ line-height:1.7;
+}
+
+#starTarget {
+ font-size:30px;
+ background:transparent;
+ color:var(--gold);
+ padding:6px;
+}
+
+#memory {
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:6px;
+ margin-top:10px;
+}
+
+.tile {
+ min-height:43px;
+ background:#dce9d9;
+ border-radius:10px;
+ color:#173c31;
+ font-size:20px;
+}
+
+.tile.done {background:#d7b66c}
+
+.coinbar {
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:10px;
+ margin:0 auto 25px;
+ padding:12px 18px;
+ border:1px solid #d7b66c77;
+ border-radius:30px;
+ width:max-content;
+ color:#f1d99e;
+ font-size:13px;
+}
+
+.treasure {
+ max-width:600px;
+ margin:auto;
+ text-align:center;
+ padding:30px 20px;
+ border:1px solid #d7b66c77;
+ border-radius:24px;
+ background:linear-gradient(140deg,#d7b66c18,#fff0);
+}
+
+.chest {
+ font-size:54px;
+ animation:float 3s infinite;
+}
+
+.treasure button {margin-top:12px}
+
+#treasureMessage {
+ display:none;
+ background:var(--cream);
+ color:var(--ink);
+ padding:23px;
+ border-radius:16px;
+ margin-top:20px;
+ line-height:1.8;
+ font-family:'Playfair Display',serif;
+ font-size:18px;
+ animation:pop .5s;
+}
+
+footer {
+ text-align:center;
+ padding:45px 20px 55px;
+ color:#9fb3a4;
+ font-size:11px;
+ letter-spacing:1px;
+}
+
+footer span {color:var(--gold)}
+
+@media(max-width:520px) {
+ .hero {min-height:70vh;padding-top:45px}
+ .arch {padding:55px 18px 45px}
+ .arabic {font-size:27px}
+ .message {padding:30px 20px}
+ .message p {font-size:18px}
+}
+</style>
+  
+<script>
+let coins = 0;
+let giftUsed = false;
+let starsRunning = false;
+let starHits = 0;
+let starTimer = null;
+
+let memoryDeck = [];
+let firstTile = null;
+let lockBoard = false;
+let matched = 0;
+let memoryWon = false;
+
+const $ = id => document.getElementById(id);
+
+function updateCoins() {
+  $('coinCount').textContent = coins;
+  $('unlockButton').disabled = coins < 100;
+}
+
+function award(amount) {
+  coins += amount;
+  updateCoins();
+}
+
+/* GAME 1: CATCH THE STARS */
+
+function startStars() {
+  if (starsRunning) return;
+
+  starsRunning = true;
+  starHits = 0;
+
+  $('startStars').disabled = true;
+
+  let seconds = 20;
+
+  $('starArea').innerHTML =
+    'Time: <b id="starTime">20</b>s · Stars: ' +
+    '<b id="starHits">0</b>/7<br>' +
+    '<button id="starTarget">✦</button>';
+
+  const target = $('starTarget');
+
+  target.onclick = () => {
+    if (!starsRunning) return;
+
+    starHits++;
+    $('starHits').textContent = starHits;
+
+    if (starHits >= 7) {
+      clearInterval(starTimer);
+      starsRunning = false;
+
+      award(25);
+
+      $('starArea').textContent =
+        'You caught all 7 stars! +25 coins ✨';
+
+      $('startStars').disabled = false;
+    }
+  };
+
+  starTimer = setInterval(() => {
+    seconds--;
+
+    const timer = $('starTime');
+
+    if (timer) timer.textContent = seconds;
+
+    if (seconds <= 0 && starsRunning) {
+      clearInterval(starTimer);
+      starsRunning = false;
+
+      $('starArea').textContent =
+        'Time is up! Try again 🌟';
+
+      $('startStars').disabled = false;
+    }
+  }, 1000);
+}
+
+/* GAME 2: MYSTERY GIFT */
+
+function openGift() {
+  if (giftUsed) return;
+
+  giftUsed = true;
+  $('giftButton').disabled = true;
+
+  $('giftArea').textContent =
+    'A golden surprise! +25 coins 🎀';
+
+  award(25);
+}
+
+/* GAME 3: MEMORY MATCH */
+
+function resetMemory() {
+  const symbols = ['☾', '✦', '❀'];
+
+  memoryDeck = [...symbols, ...symbols]
+    .sort(() => Math.random() - 0.5);
+
+  firstTile = null;
+  lockBoard = false;
+  matched = 0;
+  memoryWon = false;
+
+  $('memoryStatus').textContent =
+    'Find the matching pairs.';
+
+  $('memory').innerHTML = '';
+
+  memoryDeck.forEach(symbol => {
+    const tile = document.createElement('button');
+
+    tile.className = 'tile';
+    tile.textContent = '?';
+
+    tile.onclick = () => flipTile(tile, symbol);
+
+    $('memory').appendChild(tile);
+  });
+}
+
+function flipTile(tile, symbol) {
+  if (
+    lockBoard ||
+    tile.classList.contains('done') ||
+    tile.textContent !== '?'
+  ) return;
+
+  tile.textContent = symbol;
+
+  if (!firstTile) {
+    firstTile = { tile, symbol };
+    return;
+  }
+
+  if (firstTile.symbol === symbol) {
+    tile.classList.add('done');
+    firstTile.tile.classList.add('done');
+
+    firstTile = null;
+    matched++;
+
+    if (matched === 3 && !memoryWon) {
+      memoryWon = true;
+
+      $('memoryStatus').textContent =
+        'Perfect match! +50 coins 🌙';
+
+      award(50);
+    }
+  } else {
+    lockBoard = true;
+
+    const previous = firstTile.tile;
+    firstTile = null;
+
+    setTimeout(() => {
+      tile.textContent = '?';
+      previous.textContent = '?';
+      lockBoard = false;
+    }, 750);
+  }
+}
+
+/* GOLDEN TREASURE */
+
+function unlockTreasure() {
+  if (coins < 100) return;
+
+  $('treasureMessage').style.display = 'block';
+
+  $('unlockButton').textContent =
+    'Treasure unlocked ✨';
+
+  $('unlockButton').disabled = true;
+}
+
+/* INITIALIZE */
+
+resetMemory();
+updateCoins();
+
+</script>
+
+</body>
+</html>
+
